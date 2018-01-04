@@ -1,0 +1,26 @@
+1.密码不可见
+代码如下：
+function hideShowPsw(){
+  if (demoInput.type == "password") {
+   demoInput.type = "text";
+   demo_img.src = "img/mimakejian@2x.png";
+  }else {
+   demoInput.type = "password";
+   demo_img.src = "img/mimabukejian@2x.png";
+  }
+ };
+ 2.发送验证码
+ 代码如下：
+ function sendMobileCode(mobile){
+    $.getJSON('/user/login?mobile='+mobile, function(data){
+        //info 里面是提示错误信息,status为1代表短信发送成功，为0或者-1 代表失败
+        if(data.status==1){
+            // alert('ok');
+            console.log('ok');
+        }else{
+            console.log(data.info);
+            //alert(data.info);
+        }
+    });
+}
+ 
