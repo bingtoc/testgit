@@ -1,0 +1,28 @@
+1.获取年月日的方法 并显示为如2018-01-03这种，单数前面加零
+代码如下：
+var calDateArr;
+var nowDate = new Date();
+var year = nowDate.getFullYear();（获取年份）
+var month = nowDate.getMonth() + 1 < 10 ? "0" + (nowDate.getMonth() + 1): nowDate.getMonth() + 1;（获取月份）
+var day = nowDate.getDate() < 10 ? "0" + nowDate.getDate() : nowDate.getDate();（获取当前日期）
+var dateStr = year + "-" + month + "-" + day;（年月日字符串拼接）
+打印dateStr即可。
+
+2.获取一段时间内的具体日期 比如2017-08--2018-02内的日期（2017-08-01，2017-08-02....等）
+（1）仍旧是先写了一个方法，到时候需要的时候直接调用
+  代码如下：
+    function getDayArr(startTime,endTime){
+      var dayArr=new Array();
+      var i = 0;
+      while((endTime.getTime()-startTime.getTime())>=0){ 
+      var year = startTime.getFullYear(); 
+      var month = startTime.getMonth()<10?"0"+(startTime.getMonth()+1):startTime.getMonth()+1; 
+      var day = startTime.getDate()+1<11?"0"+startTime.getDate():startTime.getDate(); 
+      dayArr[i] = year+"-"+month+"-"+day; 
+      startTime.setDate(startTime.getDate()+1);
+      i++; 
+      }
+      return dayArr;
+    }
+（2）调用方法，写上自己的开始和结束时间就可。
+  
