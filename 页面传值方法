@@ -1,0 +1,19 @@
+页面之间互相带参数传值
+一般页面里我们经常需要传id，或者一些参数到下一个页面，这里是我自己经常用的一个方法
+1.先写了一个方法，用来获取传入的值（就是问号后面那些值），之后就能直接调用，这样比较方便，直接上代码：
+function getPostParamter(url) {
+  var request = new Object();
+  if(url.indexOf("?") != -1) {
+    var str = url.substr(1);
+    var strs = str.split("&");
+    for(var i = 0; i < strs.length; i++) {
+      request[strs[i].split("=")[0]] = (strs[i].split("=")[1]);
+    }
+  }
+  return request;
+}
+2.就能直接获取到传来的值了，如下，我拿到传来的id值
+var request = getPostParamter(location.search);
+var id = request["id"];	
+
+好啦，就是这样啦，打印一下就能看到你拿到的值了。
