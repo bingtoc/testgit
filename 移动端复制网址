@@ -1,0 +1,23 @@
+用到的是一个js插件：clipboard
+1.首先下载clipboard.min.js文件，并引用在页面中。（可以直接官网中下载）
+2.html代码:<div class="lianjie">'+							  
+						'<input id="foo'+i+'" value="'+这里放从后台获取到的数据+'" class="lianjie-one">'+						
+						'<button class="fenxiang" data-clipboard-target="#foo'+i+'" style="border:none">复制</button>'+									   
+						'</div>
+3.js代码：var clipboard = new Clipboard('.fenxiang');（必须要先声明变量）
+
+      //复制成功
+				clipboard.on('success', function(e) {
+					alert('复制成功！');
+				    console.info('Action:', e.action);
+				    console.info('Text:','复制成功!');
+				    console.info('Trigger:', e.trigger);
+				
+				    e.clearSelection();
+				});
+			
+      //复制失败
+				clipboard.on('error', function(e) {
+				    console.error('Action:', e.action);
+				    console.error('Trigger:', e.trigger);
+				});
