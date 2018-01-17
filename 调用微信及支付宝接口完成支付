@@ -1,0 +1,21 @@
+1.判断是否是微信浏览器，如果是微信浏览器不调用支付宝接口
+var ua = window.navigator.userAgent.toLowerCase();
+if(ua.match(/MicroMessenger/i) == 'micromessenger'){（在微信浏览器中）
+    jspay();（微信支付方法）
+}else{
+    wapbuy();（支付宝支付方法）
+}
+
+2.在你选择微信支付的方法之后，调用接口里返回的url地址
+window.location.href=接口中的地址;
+3.支付成功后，返回地址
+A. 如果是返回上一个页面，操作如下：
+（1）先获取本页面的网址var targetUrl=window.location.href（若需带参数，在后面拼接即可）
+ (2)转化一下地址格式：targetUrl = encodeURIComponent(targetUrl);
+ (3)支付成功返回地址：window.location.href=data.wx.info.mweb_url+"&redirect_url="+targetUrl;
+ 
+B.返回指定页面
+先判断是否支付成功
+if(res.err_msg == "get_brand_wcpay_request:ok" ){(判断是否支付成功)
+  window.location.href=指定地址;                       
+}
