@@ -1,0 +1,11 @@
+ajax数据交互，截取服务器返回的信息
+try
+{
+    data = jQuery.parseJSON(data);
+}
+catch(err)
+{
+console.log('json解析错误');
+console.log('err');
+console.log('服务器错误');
+}
