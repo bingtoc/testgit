@@ -1,26 +1,18 @@
  $(function () {             
     //绑定滚动条事件 
       //绑定滚动条事件 
-    $(window).bind("scroll", function () { 
-        var sTop = $(window).scrollTop(); 
-        var sTop = parseInt(sTop); 
-        if (sTop >= 130) { 
-            if (!$("#scrollSearchDiv").is(":visible")) { 
-                try { 
-                    $("#scrollSearchDiv").slideDown(); 
-                } catch (e) { 
-                    $("#scrollSearchDiv").show(); 
-                }                       
-            } 
-        } 
-        else { 
-            if ($("#scrollSearchDiv").is(":visible")) { 
-                try { 
-                    $("#scrollSearchDiv").slideUp(); 
-                } catch (e) { 
-                    $("#scrollSearchDiv").hide(); 
-                }                        
-            } 
-        }  
+     $(window).bind("scroll", function () { 
+         var sTop = $(window).scrollTop(); 
+         var sTop = parseInt(sTop); 
+         var scrollTop = document.documentElement.scrollTop||document.body.scrollTop;(滚动条位置)
+         if(scrollTop>=document.body.offsetHeight-document.documentElement.clientHeight)（判断滚动条是否在底部）
+         {
+             $(".click-btn").fadeIn(); 
+         }
+         if(sTop >=200&&scrollTop<document.body.offsetHeight-document.documentElement.clientHeight){
+          $(".click-btn").fadeOut(); 
+         }else{
+          $(".click-btn").fadeIn(); 
+         }
     }); 
 }) 
