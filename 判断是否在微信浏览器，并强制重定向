@@ -1,0 +1,13 @@
+判断是否在微信浏览器里，并强制重定向
+var ua = window.navigator.userAgent.toLowerCase();
+  if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+          $('.payment-style-zhifubao').hide();
+//		强制重定向http跳转https
+    var targetProtocol = "https:";
+    if (window.location.protocol != targetProtocol){
+      window.location.href = targetProtocol +
+      window.location.href.substring(window.location.protocol.length);
+    };
+  };
+  
+  
