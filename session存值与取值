@@ -1,0 +1,19 @@
+session存值：
+1.声明一个空数组：var objectList = new Array();
+2.循环遍历要存储的li，并做session存值：
+$('.contact li').each(function(i){			    			
+    objectList.push(new Persion($(this).find(".name").html(),$(this).find(".number").html(),$(this).find(".price").html()));
+});					
+function Persion(name,phone,price){
+this.name=name;
+    this.phone=phone;
+    this.price=price;
+}						
+sessionStorage.setItem('contact_list', JSON.stringify(objectList));
+
+session取值：
+//	从session中取值
+		var userJsonStrd=sessionStorage.getItem('contact_list');
+			  data=JSON.parse(userJsonStrd);
+        console.log(data)
+        data值即为取出的session值。
